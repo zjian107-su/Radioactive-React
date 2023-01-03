@@ -1,64 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { Component } from "react";
-
-// arrow function
-const Body01 = () => (
-  <div className="App">
-    <h1>You are awesome</h1>
-  </div>
-);
-
-const Body02 = () => (
-  <div className="App">
-    <h1>You are best</h1>
-  </div>
-);
-
-// class declaration
-class ThirdBody extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>{this.props.context}</h1>
-      </div>
-    );
-  }
-}
-
-const FourthBody = (props) => (
-  <div className="App">
-    <h1>{props.content}</h1>
-  </div>
-);
-
-// function declaration
-function Header() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Bombastic Bro</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-const Todos = () => (
-  <ul>
-    <li>Learn React</li>
-    <li>Learn Redux</li>
-    <li>Learn React Router</li>
-    <li>Learn React Native</li>
-  </ul>
-);
+import "./App.css";
+import Body01 from "./components/Body01";
+import Body02 from "./components/Body02";
+import Body03 from "./components/Body03";
+import Body04 from "./components/Body04";
+import Header from "./components/Header";
+import Todos from "./components/Todos";
 
 function App() {
   return (
@@ -66,8 +12,8 @@ function App() {
       {/* <Header /> */}
       <Body01 content="content01" />
       <Body02 value={5} />
-      <ThirdBody context="I am cool" />
-      <FourthBody content="I am cool too!" />
+      <Body03 context="I am cool" />
+      <Body04 content="I am cool too!" />
       <Todos />
     </div>
   );
