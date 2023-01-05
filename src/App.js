@@ -8,6 +8,16 @@ import Body04 from "./components/bodies/Body04";
 import Todos from "./components/Todos";
 import Count from "./components/others/Count";
 
+
+const todos = [
+  "Buy groceries is Not started. Due on 13/9/2023. High priority.",
+  "Buy bread is Not started. Due on 13/9/2023. High priority.",
+  "Buy milk is Not started. Due on 13/9/2023. High priority.",
+  "Cook dinner is In progress. Due on 14/9/2023. Medium priority.",
+  "Wash the dishes is Completed. Due on 14/9/2023. Low priority.",
+  "Go to the gym is Completed. Due on 14/7/2023. Low priority.",
+];
+
 function App() {
   return (
     <div>
@@ -19,7 +29,7 @@ function App() {
 
       {/* <Count /> */}
       <div className="App">
-        <Todos />
+        <Todos todos={todos} />
       </div>
     </div>
   );
