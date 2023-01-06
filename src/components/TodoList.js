@@ -16,7 +16,8 @@ const TodoList = (props) => {
               status={todo.status}
               dueDate={todo.dueDate}
               priority={todo.priority}
-              childFunc={parentFunc}
+              grandpaFunc={parentFunc}
+              addItem={props.addItem}
             />
           </div>
         ))}

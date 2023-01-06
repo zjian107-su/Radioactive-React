@@ -70,8 +70,29 @@ const todos2 = [
   },
 ];
 
+const handleDelete = (uuid) => {
+  // if todos2.include(uuid) {
+  //   console.log(`deleting...item of id: + ${uuid}`);
+  // }
+
+  console.log(`deleting...item of id: + ${uuid}`);
+};
+
+const addItem = () => {
+  const newTodo = {
+    uuid: uuidv4(),
+    title: "Go to the gym",
+    status: "Completed",
+    dueDate: "14/7/2023",
+    priority: "Low priority",
+  };
+
+  todos2.unshift(newTodo);
+  console.log(todos2);
+};
+
 const grandpaFunc = () => {
-  console.log("I am func01");
+  console.log("grandpaFunc");
 };
 
 function App() {
@@ -94,7 +115,7 @@ function App() {
 
       {/* <Count /> */}
       <div className="App">
-        <TodoList todos={todos2} parentFunc={grandpaFunc} />
+        <TodoList todos={todos2} grandpaFunc={grandpaFunc} addItem={addItem} />
       </div>
     </div>
   );

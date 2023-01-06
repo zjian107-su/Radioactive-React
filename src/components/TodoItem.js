@@ -7,7 +7,7 @@ const TodoItem = (props) => {
     console.log(`editting item of id: + ${props.id}`);
   };
 
-  const { childFunc } = props;
+  const { grandpaFunc } = props;
 
   return (
     <div className="mb-6">
@@ -30,8 +30,15 @@ const TodoItem = (props) => {
         onClick={handleEdit}>
         <span className="text-base"> Edit </span>
       </button>
-      <button className="btn w-32 btn-primary rounded-full" onClick={childFunc}>
+      <button
+        className="btn w-32 btn-primary rounded-full"
+        onClick={grandpaFunc}>
         <span className="text-base"> Chain </span>
+      </button>
+      <button
+        className="btn w-32 btn-primary rounded-full"
+        onClick={props.addItem}>
+        ADDITEM
       </button>
     </div>
   );
