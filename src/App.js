@@ -7,7 +7,14 @@ import Body04 from "./components/bodies/Body04";
 // import Header from "./components/Header";
 import Count from "./components/others/Count";
 import TodoList from "./components/TodoList";
+import { v4 as uuidv4 } from "uuid";
 
+const id01 = uuidv4();
+const id02 = uuidv4();
+const id03 = uuidv4();
+const id04 = uuidv4();
+const id05 = uuidv4();
+const id06 = uuidv4();
 
 const todos = [
   "Buy groceries is Not started. Due on 13/9/2023. High priority.",
@@ -77,7 +84,7 @@ function App() {
 
       {/* <Count /> */}
       <div className="App">
-        <TodoList {...todos2} />
+        <TodoList todos={todos2} />
       </div>
     </div>
   );
