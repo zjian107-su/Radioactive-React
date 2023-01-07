@@ -1,7 +1,9 @@
 const Todos = (props) => (
   <div>
-    <h1> TODOS LIST </h1>
-    <ul style={{ "list-style-type": "none" }}>
+    <ul
+      style={{ "list-style-type": "none" }}
+      role="list"
+      className="marker:text-sky-100 list-disc pl-5 space-y-3 text-slate-800">
       {props.todos.map((todo, index) => (
         <li key={index}>{todo}</li>
       ))}

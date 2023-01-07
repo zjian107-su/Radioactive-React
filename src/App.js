@@ -20,7 +20,16 @@ const todos = [
 
 function App() {
   return (
-    <div>
+    <div class="selection:bg-pink-300">
+      {/* title */}
+      <blockquote class="text-2xl font-semibold italic text-center text-slate-900">
+        <span class="mr-2">Daniel's</span>
+        <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+          <span class="relative text-white tracking-tight">Todo</span>
+        </span>
+        <span class="ml-2">List.</span>
+      </blockquote>
+
       {/* <Header />
       <Body01 content="content01" />
       <Body02 value={5} />
