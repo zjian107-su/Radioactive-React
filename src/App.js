@@ -27,36 +27,42 @@ const todos = [
 
 const todos2 = [
   {
+    uuid: uuidv4(),
     title: "Buy groceries",
     status: "Not started",
     dueDate: "13/9/2023",
     priority: "High priority",
   },
   {
+    uuid: uuidv4(),
     title: "Buy bread",
     status: "Not started",
     dueDate: "13/9/2023",
     priority: "High priority",
   },
   {
+    uuid: uuidv4(),
     title: "Buy milk",
     status: "Not started",
     dueDate: "13/9/2023",
     priority: "High priority",
   },
   {
+    uuid: uuidv4(),
     title: "Cook dinner",
     status: "In progress",
     dueDate: "14/9/2023",
     priority: "Medium priority",
   },
   {
+    uuid: uuidv4(),
     title: "Wash the dishes",
     status: "Completed",
     dueDate: "14/9/2023",
     priority: "Low priority",
   },
   {
+    uuid: uuidv4(),
     title: "Go to the gym",
     status: "Completed",
     dueDate: "14/7/2023",
@@ -64,11 +70,15 @@ const todos2 = [
   },
 ];
 
+const grandpaFunc = () => {
+  console.log("I am func01");
+};
+
 function App() {
   return (
     <div className="selection:bg-pink-300">
       {/* title */}
-      <blockquote className="text-2xl font-semibold italic text-center text-slate-900">
+      <blockquote className="text-2xl font-semibold italic text-center mb-6">
         <span className="mr-2">Daniel's</span>
         <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
           <span className="relative text-white tracking-tight">Todo</span>
@@ -84,7 +94,7 @@ function App() {
 
       {/* <Count /> */}
       <div className="App">
-        <TodoList todos={todos2} />
+        <TodoList todos={todos2} parentFunc={grandpaFunc} />
       </div>
     </div>
   );
