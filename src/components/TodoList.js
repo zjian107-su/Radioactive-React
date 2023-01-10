@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TodoItem from "./TodoItem";
 
-
 const TodoList = (props) => {
-  console.log(props);
+  useEffect(() => {
+    console.log("MILK");
+  }, [props.todos]);
 
   return (
     <div>
@@ -17,6 +18,7 @@ const TodoList = (props) => {
               dueDate={todo.dueDate}
               priority={todo.priority}
               handleDelete={props.handleDelete}
+              isInEditting={false}
               addItem={props.addItem}
             />
           </div>

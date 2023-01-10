@@ -66,7 +66,6 @@ function App() {
     };
 
     setTodos([...todos, newTodo]);
-    console.log(todos);
   };
 
   return (
