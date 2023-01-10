@@ -3,11 +3,18 @@ import TodoItem from "./TodoItem";
 
 const TodoList = (props) => {
   useEffect(() => {
-    console.log("MILK");
+    console.log("todos changed");
   }, [props.todos]);
 
   return (
     <div>
+      <div>
+        <button
+          className="btn w-32 btn-primary rounded-full"
+          onClick={props.addItem}>
+          ADDITEM
+        </button>
+      </div>
       <ul style={{ listStyleType: "none" }} role="list">
         {props.todos.map((todo) => (
           <div key={todo.uuid}>
@@ -19,7 +26,7 @@ const TodoList = (props) => {
               priority={todo.priority}
               handleDelete={props.handleDelete}
               isInEditting={false}
-              addItem={props.addItem}
+              finishEdit={props.finishEdit}
             />
           </div>
         ))}

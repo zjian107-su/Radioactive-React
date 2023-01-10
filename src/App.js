@@ -65,7 +65,27 @@ function App() {
       priority: "Low priority",
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos([newTodo, ...todos]);
+  };
+
+  const finishEdit = (newTodo, uuid) => {
+    todos.map((todo) => {
+      if (todo.uuid === uuid) {
+        if (newTodo.title !== "") {
+          todo.title = newTodo.title;
+        }
+        if (newTodo.status !== "") {
+          todo.status = newTodo.status;
+        }
+        if (newTodo.dueDate !== "") {
+          todo.dueDate = newTodo.dueDate;
+        }
+        if (newTodo.priority !== "") {
+          todo.priority = newTodo.priority;
+        }
+      }
+    });
+    setTodos([...todos]);
   };
 
   return (
@@ -85,7 +105,12 @@ function App() {
       <Body04 content="I am cool too!" /> */}
       {/* <Count /> */}
       <div className="App">
-        <TodoList todos={todos} handleDelete={handleDelete} addItem={addItem} />
+        <TodoList
+          todos={todos}
+          handleDelete={handleDelete}
+          addItem={addItem}
+          finishEdit={finishEdit}
+        />
       </div>
     </div>
   );
