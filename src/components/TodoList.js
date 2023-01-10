@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 
 const TodoList = (props) => {
-  const { parentFunc } = props;
+  console.log(props);
 
   return (
     <div>
@@ -16,7 +16,7 @@ const TodoList = (props) => {
               status={todo.status}
               dueDate={todo.dueDate}
               priority={todo.priority}
-              grandpaFunc={parentFunc}
+              handleDelete={props.handleDelete}
               addItem={props.addItem}
             />
           </div>

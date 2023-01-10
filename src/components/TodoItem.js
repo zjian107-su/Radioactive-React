@@ -1,13 +1,11 @@
 const TodoItem = (props) => {
   const handleDelete = (e) => {
-    console.log(`deleting...item of id: + ${props.id}`);
+    props.handleDelete(props.id);
   };
 
   const handleEdit = () => {
     console.log(`editting item of id: + ${props.id}`);
   };
-
-  const { grandpaFunc } = props;
 
   return (
     <div className="mb-6">
@@ -29,11 +27,6 @@ const TodoItem = (props) => {
         className="btn w-32 btn-primary rounded-full"
         onClick={handleEdit}>
         <span className="text-base"> Edit </span>
-      </button>
-      <button
-        className="btn w-32 btn-primary rounded-full"
-        onClick={grandpaFunc}>
-        <span className="text-base"> Chain </span>
       </button>
       <button
         className="btn w-32 btn-primary rounded-full"
