@@ -9,22 +9,6 @@ import Count from "./components/others/Count";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
 
-const id01 = uuidv4();
-const id02 = uuidv4();
-const id03 = uuidv4();
-const id04 = uuidv4();
-const id05 = uuidv4();
-const id06 = uuidv4();
-
-const todos = [
-  "Buy groceries is Not started. Due on 13/9/2023. High priority.",
-  "Buy bread is Not started. Due on 13/9/2023. High priority.",
-  "Buy milk is Not started. Due on 13/9/2023. High priority.",
-  "Cook dinner is In progress. Due on 14/9/2023. Medium priority.",
-  "Wash the dishes is Completed. Due on 14/9/2023. Low priority.",
-  "Go to the gym is Completed. Due on 14/7/2023. Low priority.",
-];
-
 const todos2 = [
   {
     uuid: uuidv4(),
@@ -106,13 +90,11 @@ function App() {
         </span>
         <span className="ml-2">List.</span>
       </blockquote>
-
       {/* <Header />
       <Body01 content="content01" />
       <Body02 value={5} />
       <Body03 context="I am cool" />
       <Body04 content="I am cool too!" /> */}
-
       {/* <Count /> */}
       <div className="App">
         <TodoList todos={todos2} grandpaFunc={grandpaFunc} addItem={addItem} />
