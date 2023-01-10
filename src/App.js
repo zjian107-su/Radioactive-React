@@ -89,28 +89,33 @@ function App() {
   };
 
   return (
-    <div className="selection:bg-pink-300">
-      {/* title */}
-      <blockquote className="text-2xl font-semibold italic text-center mb-6">
-        <span className="mr-2">Daniel's</span>
-        <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-          <span className="relative text-white tracking-tight">Todo</span>
-        </span>
-        <span className="ml-2">List.</span>
-      </blockquote>
-      {/* <Header />
-      <Body01 content="content01" />
-      <Body02 value={5} />
-      <Body03 context="I am cool" />
-      <Body04 content="I am cool too!" /> */}
-      {/* <Count /> */}
-      <div className="App">
-        <TodoList
-          todos={todos}
-          handleDelete={handleDelete}
-          addItem={addItem}
-          finishEdit={finishEdit}
-        />
+    <div>
+      <div className="selection:bg-pink-300">
+        {/* title */}
+        <blockquote className="text-2xl font-semibold italic text-center mb-6">
+          <span className="mr-2">Daniel's</span>
+          <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+            <span className="relative text-white tracking-tight">Todo</span>
+          </span>
+          <span className="ml-2">List.</span>
+        </blockquote>
+
+        <div className="bg-emerald-500 mb-5 App">
+          <button
+            className="btn w-32 btn-primary rounded-full"
+            onClick={addItem}>
+            ADDITEM
+          </button>
+        </div>
+
+        <div className="App">
+          <TodoList
+            todos={todos}
+            handleDelete={handleDelete}
+            addItem={addItem}
+            finishEdit={finishEdit}
+          />
+        </div>
       </div>
     </div>
   );

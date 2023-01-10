@@ -8,13 +8,6 @@ const TodoList = (props) => {
 
   return (
     <div>
-      <div>
-        <button
-          className="btn w-32 btn-primary rounded-full"
-          onClick={props.addItem}>
-          ADDITEM
-        </button>
-      </div>
       <ul style={{ listStyleType: "none" }} role="list">
         {props.todos.map((todo) => (
           <div key={todo.uuid}>

@@ -32,61 +32,104 @@ const TodoItem = (props) => {
   };
 
   return (
-    <div className="mb-6 bg-rose-400">
-      <div className="mb-1">
-        {/* show data */}
-        <h1>UUID: {props.id}</h1>
-        <p> Title is {props.title}</p>
-        <p> Status is {props.status}</p>
-        <p> Due date is {props.dueDate}</p>
-        <p> Priority is {props.priority}</p>
+    <div className="mb-6 bg-rose-400 p-4">
+      <div className="flex flex-wrap justify-between items-center mb-2">
+        {/* UUID */}
+        <p className="text-gray-600 text-sm">
+          UUID: <span className="text-gray-900">{props.id}</span>
+        </p>
+        <div className="flex gap-2">
+          <button
+            className="btn w-24 btn-primary rounded-full"
+            onClick={handleDelete}>
+            <span className="text-sm">Delete</span>
+          </button>
+          <button
+            className="btn w-24 btn-primary rounded-full"
+            onClick={handleEdit}>
+            <span className="text-sm">Edit</span>
+          </button>
+        </div>
       </div>
 
-      <button
-        className="btn w-32 btn-primary rounded-full"
-        onClick={handleDelete}>
-        <span className="text-base"> Delete </span>
-      </button>
-      <button
-        className="btn w-32 btn-primary rounded-full"
-        onClick={handleEdit}>
-        <span className="text-base"> Edit </span>
-      </button>
-
-      {editing ? (
-        <div>
-          <form onSubmit={handleSubmit} className="mt-2">
-            <ul>
-              <li>
-                <label htmlFor="title">Title: </label>
-                <input type="text" placeholder={props.title} ref={title} />
-              </li>
-              <li>
-                <label htmlFor="status">Status: </label>
-                <input type="text" placeholder={props.status} ref={status} />
-              </li>
-              <li>
-                <label htmlFor="dueDate">Due date: </label>
-                <input type="text" placeholder={props.dueDate} ref={dueDate} />
-              </li>
-              <li>
-                <label htmlFor="priority">Priority: </label>
-                <input
-                  type="text"
-                  placeholder={props.priority}
-                  ref={priority}
-                />
-              </li>
-            </ul>
-            <button
-              type="submit"
-              className="w-32 btn btn-primary rounded-full mt-1">
-              <span className="text-base"> Submit </span>
-            </button>
-          </form>
+      {/* Show data */}
+      <div className="flex flex-wrap gap-2">
+        <div className="w-1/2">
+          <p className="text-sm">
+            Title: <span className="text-gray-900">{props.title}</span>
+          </p>
+          <p className="text-sm">
+            Status: <span className="text-gray-900">{props.status}</span>
+          </p>
         </div>
-      ) : null}
+        <div className="w-1/2">
+          <p className="text-sm">
+            Due Date: <span className="text-gray-900">{props.dueDate}</span>
+          </p>
+          <p className="text-sm">
+            Priority: <span className="text-gray-900">{props.priority}</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Edit section */}
+      {editing && (
+        <form onSubmit={handleSubmit} className="mt-4">
+          <ul>
+            <li className="mb-2">
+              <label htmlFor="title" className="text-sm font-semibold">
+                Title:
+              </label>
+              <input
+                type="text"
+                placeholder={props ? props.title : "Title Example"}
+                ref={title}
+                className="border border-gray-300 px-2 py-1 rounded-md w-full"
+              />
+            </li>
+            <li className="mb-2">
+              <label htmlFor="status" className="text-sm font-semibold">
+                Status:
+              </label>
+              <input
+                type="text"
+                placeholder={props ? props.status : "Status Example"}
+                ref={status}
+                className="border border-gray-300 px-2 py-1 rounded-md w-full"
+              />
+            </li>
+            <li className="mb-2">
+              <label htmlFor="dueDate" className="text-sm font-semibold">
+                Due Date:
+              </label>
+              <input
+                type="text"
+                placeholder={props ? props.dueDate : "Due Date Example"}
+                ref={dueDate}
+                className="border border-gray-300 px-2 py-1 rounded-md w-full"
+              />
+            </li>
+            <li className="mb-2">
+              <label htmlFor="priority" className="text-sm font-semibold">
+                Priority:
+              </label>
+              <input
+                type="text"
+                placeholder={props ? props.priority : "Priority Example"}
+                ref={priority}
+                className="border border-gray-300 px-2 py-1 rounded-md w-full"
+              />
+            </li>
+          </ul>
+          <button
+            type="submit"
+            className="w-24 btn btn-primary rounded-full mt-2">
+            <span className="text-sm">Submit</span>
+          </button>
+        </form>
+      )}
     </div>
   );
 };
+
 export default TodoItem;
