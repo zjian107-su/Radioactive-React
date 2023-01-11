@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const EditSetcion = (props) => {
-  const [editing, setEditing] = useState(props.isInEditting);
-
-  const title = useRef();
-  const status = useRef();
-  const dueDate = useRef();
-  const priority = useRef();
+const EditSetction = (props) => {
+  const [editing, setEditing] = useState(true);
+  const [todoData, setTodoData] = useState({
+    uuid: props.id || uuidv4(),
+    title: props.title || "",
+    status: props.status || "",
+    dueDate: props.dueDate || "",
+    priority: props.priority || "",
+  });
 
   const finishEdit = (newTodo, uuid = "") => {
     // for adding new todo
@@ -37,14 +39,22 @@ const EditSetcion = (props) => {
     return;
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTodoData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
       uuid: uuidv4(),
-      title: title.current.value,
-      status: status.current.value,
-      dueDate: dueDate.current.value,
-      priority: priority.current.value,
+      title: todoData.title,
+      status: todoData.status,
+      dueDate: todoData.dueDate,
+      priority: todoData.priority,
     };
     console.log(newTodo);
     finishEdit(newTodo, props.id);
@@ -60,9 +70,11 @@ const EditSetcion = (props) => {
               Title:
             </label>
             <input
+              name="title"
               type="text"
               placeholder={props ? props.title : "Title Example"}
-              ref={title}
+              value={todoData.title}
+              onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
             />
           </li>
@@ -72,8 +84,10 @@ const EditSetcion = (props) => {
             </label>
             <input
               type="text"
+              name="status"
               placeholder={props ? props.status : "Status Example"}
-              ref={status}
+              value={todoData.status}
+              onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
             />
           </li>
@@ -83,8 +97,10 @@ const EditSetcion = (props) => {
             </label>
             <input
               type="text"
+              name="dueDate"
               placeholder={props ? props.dueDate : "Due Date Example"}
-              ref={dueDate}
+              value={todoData.dueDate}
+              onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
             />
           </li>
@@ -94,8 +110,10 @@ const EditSetcion = (props) => {
             </label>
             <input
               type="text"
+              name="priority"
               placeholder={props ? props.priority : "Priority Example"}
-              ref={priority}
+              value={todoData.priority}
+              onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
             />
           </li>
@@ -113,4 +131,4 @@ const EditSetcion = (props) => {
   );
 };
 
-export default EditSetcion;
+export default EditSetction;
