@@ -1,19 +1,12 @@
 import "./App.css";
 import Count from "./components/others/Count";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
-import { useRef } from "react";
+import EditSetcion from "./components/EditSection";
 
 function App() {
   const [isInEditting, setIsInEditting] = useState(false);
-
-  // one useState using one object
-  const title = useRef();
-  const status = useRef();
-  const dueDate = useRef();
-  const priority = useRef();
-
   const [todos, setTodos] = useState([
     {
       uuid: uuidv4(),
@@ -59,13 +52,19 @@ function App() {
     },
   ]);
 
+  // one useState using one object
+  const title = useRef();
+  const status = useRef();
+  const dueDate = useRef();
+  const priority = useRef();
+
   const handleDelete = (uuid) => {
     console.log("deleting...");
     setTodos(todos.filter((todo) => todo.uuid !== uuid));
     console.log(uuid);
   };
 
-  const startAdd = () => {
+  const startAdd = (event) => {
     setIsInEditting(true);
   };
 
@@ -83,9 +82,11 @@ function App() {
     setTodos([newTodo, ...todos]);
   };
 
-  const finishEdit = (newTodo, uuid = "") => {
+  const finishEdit = (e, newTodo, uuid = "") => {
+    e.preventDefault();
     // for adding new todo
     if (uuid === "") {
+      console.log("here");
       addItem(newTodo);
       return;
     }
@@ -113,6 +114,11 @@ function App() {
 
   return (
     <div>
+      <EditSetcion
+        isInEditting={true}
+        todo={todos}
+        addItem={addItem}
+        setTodos={setTodos}></EditSetcion>
       <div className="selection:bg-pink-300">
         {/* title */}
         <blockquote className="text-2xl font-semibold italic text-center mb-6">
@@ -124,18 +130,28 @@ function App() {
         </blockquote>
 
         {/* Add Item */}
-        <div className="bg-emerald-500 mb-5 App">
-          <button
-            className="btn w-32 btn-primary rounded-full"
-            onClick={startAdd}>
-            {isInEditting ? "FINSIH EDIT" : "ADDITEM"}
-          </button>
+        {/* <div className="bg-emerald-500 mb-5 App p-4">
+          {isInEditting ? null : (
+            <button
+              className="btn w-32 btn-primary rounded-full"
+              onClick={startAdd}>
+              ADDITEM
+            </button>
+          )} */}
 
-          {/* Edit section */}
-          {isInEditting ? <h1>DANIEL</h1> : null}
-
-          {isInEditting ? (
-            <form onSubmit={finishEdit} className="mt-4">
+        {/* Edit section */}
+        {/* {isInEditting ? (
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                finishEdit(event, {
+                  title: title.current.value,
+                  status: status.current.value,
+                  dueDate: dueDate.current.value,
+                  priority: priority.current.value,
+                });
+              }}
+              className="mt-4">
               <ul>
                 <li className="mb-2">
                   <label htmlFor="title" className="text-sm font-semibold">
@@ -189,7 +205,7 @@ function App() {
               </button>
             </form>
           ) : null}
-        </div>
+        </div> */}
 
         <div className="App">
           <TodoList

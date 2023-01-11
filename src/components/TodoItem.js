@@ -121,6 +121,8 @@ const TodoItem = (props) => {
               />
             </li>
           </ul>
+
+          {/* Submit */}
           <button
             type="submit"
             className="w-24 btn btn-primary rounded-full mt-2">
