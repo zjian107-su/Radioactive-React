@@ -3,8 +3,17 @@ import Count from "./components/others/Count";
 import { useState } from "react";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
 
 function App() {
+  const [isInEditting, setIsInEditting] = useState(false);
+
+  // one useState using one object
+  const title = useRef();
+  const status = useRef();
+  const dueDate = useRef();
+  const priority = useRef();
+
   const [todos, setTodos] = useState([
     {
       uuid: uuidv4(),
@@ -56,19 +65,32 @@ function App() {
     console.log(uuid);
   };
 
-  const addItem = () => {
+  const startAdd = () => {
+    setIsInEditting(true);
+  };
+
+  const addItem = (todo) => {
+    console.log(todo);
+
     const newTodo = {
       uuid: uuidv4(),
-      title: "Go to the gym",
-      status: "Completed",
-      dueDate: "14/7/2023",
-      priority: "Low priority",
+      title: todo.title,
+      status: todo.status,
+      dueDate: todo.dueDate,
+      priority: todo.priority,
     };
 
     setTodos([newTodo, ...todos]);
   };
 
-  const finishEdit = (newTodo, uuid) => {
+  const finishEdit = (newTodo, uuid = "") => {
+    // for adding new todo
+    if (uuid === "") {
+      addItem(newTodo);
+      return;
+    }
+
+    // for editing todo
     todos.map((todo) => {
       if (todo.uuid === uuid) {
         if (newTodo.title !== "") {
@@ -86,6 +108,7 @@ function App() {
       }
     });
     setTodos([...todos]);
+    return;
   };
 
   return (
@@ -100,12 +123,72 @@ function App() {
           <span className="ml-2">List.</span>
         </blockquote>
 
+        {/* Add Item */}
         <div className="bg-emerald-500 mb-5 App">
           <button
             className="btn w-32 btn-primary rounded-full"
-            onClick={addItem}>
-            ADDITEM
+            onClick={startAdd}>
+            {isInEditting ? "FINSIH EDIT" : "ADDITEM"}
           </button>
+
+          {/* Edit section */}
+          {isInEditting ? <h1>DANIEL</h1> : null}
+
+          {isInEditting ? (
+            <form onSubmit={finishEdit} className="mt-4">
+              <ul>
+                <li className="mb-2">
+                  <label htmlFor="title" className="text-sm font-semibold">
+                    Title:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Title Example"
+                    ref={title}
+                    className="border border-gray-300 px-2 py-1 rounded-md w-full"
+                  />
+                </li>
+                <li className="mb-2">
+                  <label htmlFor="status" className="text-sm font-semibold">
+                    Status:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Status Example"
+                    ref={status}
+                    className="border border-gray-300 px-2 py-1 rounded-md w-full"
+                  />
+                </li>
+                <li className="mb-2">
+                  <label htmlFor="dueDate" className="text-sm font-semibold">
+                    Due Date:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Due Date Example"
+                    ref={dueDate}
+                    className="border border-gray-300 px-2 py-1 rounded-md w-full"
+                  />
+                </li>
+                <li className="mb-2">
+                  <label htmlFor="priority" className="text-sm font-semibold">
+                    Priority:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Priority Example"
+                    ref={priority}
+                    className="border border-gray-300 px-2 py-1 rounded-md w-full"
+                  />
+                </li>
+              </ul>
+              <button
+                type="submit"
+                className="w-24 btn btn-primary rounded-full mt-2">
+                <span className="text-sm">Submit</span>
+              </button>
+            </form>
+          ) : null}
         </div>
 
         <div className="App">
