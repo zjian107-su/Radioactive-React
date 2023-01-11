@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList = (props) => {
   useEffect(() => {
-    console.log("todos changed");
+    console.log(props.todos);
   }, [props.todos]);
 
   return (
@@ -12,14 +12,17 @@ const TodoList = (props) => {
         {props.todos.map((todo) => (
           <div key={todo.uuid}>
             <TodoItem
-              id={todo.uuid}
+              todo={todo}
+              uuid={todo.uuid}
               title={todo.title}
               status={todo.status}
               dueDate={todo.dueDate}
               priority={todo.priority}
               handleDelete={props.handleDelete}
-              isInEditting={false}
               finishEdit={props.finishEdit}
+              todos={props.todos}
+              addItem={props.addItem}
+              setTodos={props.setTodos}
             />
           </div>
         ))}

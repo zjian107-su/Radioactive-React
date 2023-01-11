@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 const EditSetction = (props) => {
   const [editing, setEditing] = useState(true);
   const [todoData, setTodoData] = useState({
-    uuid: props.id || uuidv4(),
-    title: props.title || "",
-    status: props.status || "",
-    dueDate: props.dueDate || "",
-    priority: props.priority || "",
+    uuid: props.todo ? props.todo.uuid : uuidv4(),
+    title: props.todo ? props.todo.title : "",
+    status: props.todo ? props.todo.status : "",
+    dueDate: props.todo ? props.todo.dueDate : "",
+    priority: props.todo ? props.todo.priority : "",
   });
 
   const finishEdit = (newTodo, uuid = "") => {
@@ -49,16 +49,9 @@ const EditSetction = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTodo = {
-      uuid: uuidv4(),
-      title: todoData.title,
-      status: todoData.status,
-      dueDate: todoData.dueDate,
-      priority: todoData.priority,
-    };
-    console.log(newTodo);
-    finishEdit(newTodo, props.id);
+    finishEdit(todoData, props.uuid);
     setEditing(false);
+    props.toggleEdit();
   };
 
   return editing ? (
@@ -72,7 +65,7 @@ const EditSetction = (props) => {
             <input
               name="title"
               type="text"
-              placeholder={props ? props.title : "Title Example"}
+              placeholder={props.todo ? props.todo.title : "Title Example"}
               value={todoData.title}
               onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
@@ -85,7 +78,7 @@ const EditSetction = (props) => {
             <input
               type="text"
               name="status"
-              placeholder={props ? props.status : "Status Example"}
+              placeholder={props.todo ? props.todo.status : "Status Example"}
               value={todoData.status}
               onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
@@ -98,7 +91,7 @@ const EditSetction = (props) => {
             <input
               type="text"
               name="dueDate"
-              placeholder={props ? props.dueDate : "Due Date Example"}
+              placeholder={props.todo ? props.todo.dueDate : "Due Date Example"}
               value={todoData.dueDate}
               onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
@@ -111,7 +104,9 @@ const EditSetction = (props) => {
             <input
               type="text"
               name="priority"
-              placeholder={props ? props.priority : "Priority Example"}
+              placeholder={
+                props.todo ? props.todo.priority : "Priority Example"
+              }
               value={todoData.priority}
               onChange={handleChange}
               className="border border-gray-300 px-2 py-1 rounded-md w-full"
