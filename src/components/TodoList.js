@@ -12,14 +12,15 @@ const TodoList = (props) => {
         {props.todos.map((todo) => (
           <div key={todo.uuid}>
             <TodoItem
+              todos={props.todos}
               id={todo.uuid}
               title={todo.title}
               status={todo.status}
               dueDate={todo.dueDate}
               priority={todo.priority}
               handleDelete={props.handleDelete}
-              isInEditting={false}
               finishEdit={props.finishEdit}
+              setTodos={props.setTodos}
             />
           </div>
         ))}

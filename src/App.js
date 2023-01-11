@@ -3,7 +3,7 @@ import Count from "./components/others/Count";
 import { useState, useRef, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
-import EditSetction from "./components/EditSection";
+import EditSection from "./components/EditSection";
 
 function App() {
   const [isInEditting, setIsInEditting] = useState(false);
@@ -95,10 +95,10 @@ function App() {
 
         {/* Edit section */}
         {isInEditting ? (
-          <EditSetction
+          <EditSection
             todos={todos}
             addItem={addItem}
-            setTodos={setTodos}></EditSetction>
+            setTodos={setTodos}></EditSection>
         ) : null}
 
         <div className="App">
@@ -106,6 +106,7 @@ function App() {
             todos={todos}
             handleDelete={handleDelete}
             addItem={addItem}
+            setTodos={setTodos}
           />
         </div>
       </div>
