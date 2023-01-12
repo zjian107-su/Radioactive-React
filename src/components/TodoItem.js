@@ -22,39 +22,50 @@ const TodoItem = (props) => {
     <div className="mb-6 bg-rose-400 p-4">
       <div className="flex flex-wrap justify-between items-center mb-2">
         {/* UUID */}
-        <p className="text-gray-600 text-sm">
-          UUID: <span className="text-gray-900">{props.uuid}</span>
+        <p className="text-purple-500 font-semibold text-lg">
+          🪪 UUID:
+          <span className="text-purple-900">{props.uuid.substring(0, 10)}</span>
         </p>
         <div className="flex gap-2">
           <button
-            className="btn w-24 btn-primary rounded-full"
+            className="btn w-24 btn-primary rounded-full bg-purple-500 hover:bg-purple-600"
             onClick={handleDelete}>
-            <span className="text-sm">Delete</span>
+            <span className="text-sm text-white">Delete</span>
           </button>
           <button
-            className="btn w-24 btn-primary rounded-full"
+            className="btn w-24 btn-primary rounded-full bg-purple-500 hover:bg-purple-600"
             onClick={toggleEdit}>
-            <span className="text-sm">Edit</span>
+            <span className="text-sm text-white">Edit</span>
           </button>
         </div>
       </div>
 
       {/* Show data */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap">
         <div className="w-1/2">
-          <p className="text-sm">
-            Title: <span className="text-gray-900">{props.title}</span>
+          <p>
+            🛒 Title:{" "}
+            <span className="text-purple-900 font-semibold">{props.title}</span>
           </p>
-          <p className="text-sm">
-            Status: <span className="text-gray-900">{props.status}</span>
+          <p>
+            ✅ Status:{" "}
+            <span className="text-purple-900 font-semibold">
+              {props.status}
+            </span>
           </p>
         </div>
         <div className="w-1/2">
-          <p className="text-sm">
-            Due Date: <span className="text-gray-900">{props.dueDate}</span>
+          <p>
+            ⏰ Due Date:{" "}
+            <span className="text-purple-900 font-semibold">
+              {props.dueDate}
+            </span>
           </p>
-          <p className="text-sm">
-            Priority: <span className="text-gray-900">{props.priority}</span>
+          <p>
+            🔥 Priority:{" "}
+            <span className="text-purple-900 font-semibold">
+              {props.priority}
+            </span>
           </p>
         </div>
       </div>

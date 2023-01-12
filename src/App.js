@@ -45,7 +45,7 @@ function App() {
       <div className="bg-emerald-500 mb-5 App p-4">
         {isInEditting ? null : (
           <button
-            className="btn w-32 btn-primary rounded-full"
+            className="btn w-32 btn-primary rounded-full mb-4"
             onClick={toggleEdit}>
             ADDITEM
           </button>

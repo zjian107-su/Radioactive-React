@@ -59,7 +59,7 @@ const EditSetction = (props) => {
       <form onSubmit={handleSubmit} className="mt-4">
         <ul>
           <li className="mb-2">
-            <label htmlFor="title" className="text-sm font-semibold">
+            <label htmlFor="title" className="font-semibold">
               Title:
             </label>
             <input
@@ -72,7 +72,7 @@ const EditSetction = (props) => {
             />
           </li>
           <li className="mb-2">
-            <label htmlFor="status" className="text-sm font-semibold">
+            <label htmlFor="status" className="font-semibold">
               Status:
             </label>
             <input
@@ -85,7 +85,7 @@ const EditSetction = (props) => {
             />
           </li>
           <li className="mb-2">
-            <label htmlFor="dueDate" className="text-sm font-semibold">
+            <label htmlFor="dueDate" className="font-semibold">
               Due Date:
             </label>
             <input
@@ -98,7 +98,7 @@ const EditSetction = (props) => {
             />
           </li>
           <li className="mb-2">
-            <label htmlFor="priority" className="text-sm font-semibold">
+            <label htmlFor="priority" className="font-semibold">
               Priority:
             </label>
             <input
@@ -116,7 +116,7 @@ const EditSetction = (props) => {
 
         <button
           type="submit"
-          className="w-24 btn btn-primary rounded-full mt-2">
+          className="w-24 btn btn-primary rounded-full mt-2 mb-4">
           <span className="text-sm">Submit</span>
         </button>
       </form>
