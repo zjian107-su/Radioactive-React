@@ -31,18 +31,17 @@ function App() {
   };
 
   return (
-    <div className="selection:bg-pink-300">
+    <div className="selection:bg-pink-300 ">
       {/* title */}
-      <blockquote className="text-2xl font-semibold italic text-center mb-6">
-        <span className="mr-2">Daniel's</span>
+      <blockquote className="text-2xl font-semibold italic text-center mb-6 mt-4">
+        <span className="mr-2">✨ Daniel's</span>
         <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
           <span className="relative text-white tracking-tight">Todo</span>
         </span>
-        <span className="ml-2">List.</span>
+        <span className="ml-2">List ✨</span>
       </blockquote>
 
-      {/* Add Item */}
-      <div className="bg-emerald-500 mb-5 App p-4">
+      <div className="bg-emerald-500 mb-5 App p-4 min-h-screen">
         {isInEditting ? null : (
           <button
             className="btn w-32 btn-primary rounded-full mb-4"

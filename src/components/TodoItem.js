@@ -3,11 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import EditSetction from "./EditSection";
 
 const TodoItem = (props) => {
-  const title = useRef();
-  const status = useRef();
-  const dueDate = useRef();
-  const priority = useRef();
-
   const [editing, setEditing] = useState(false);
 
   const handleDelete = (e) => {
@@ -20,8 +15,8 @@ const TodoItem = (props) => {
 
   return (
     <div className="mb-6 bg-rose-400 p-4">
+      {/* Title and button */}
       <div className="flex flex-wrap justify-between items-center mb-2">
-        {/* UUID */}
         <p className="text-purple-500 font-semibold text-lg">
           🪪 UUID:
           <span className="text-purple-900">{props.uuid.substring(0, 10)}</span>

@@ -59,3 +59,10 @@ Modifying task status (complete/incomplete)
 TodoFilter:
 
 Allowing users to filter tasks based on status (complete/incomplete)
+
+
+# Style ideas
+- Custom Typography
+- Icons: Utilize icons to represent actions or categories within your todo list.
+- Animations and Transitions
+- Backgrounds and Patterns
