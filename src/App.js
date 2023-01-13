@@ -1,6 +1,5 @@
 import "./App.css";
-import Count from "./components/others/Count";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import TodoList from "./components/TodoList";
 import { v4 as uuidv4 } from "uuid";
 import EditSetction from "./components/EditSection";

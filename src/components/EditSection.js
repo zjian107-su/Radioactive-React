@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const EditSetction = (props) => {
@@ -12,13 +12,10 @@ const EditSetction = (props) => {
   });
 
   const finishEdit = (newTodo, uuid = "") => {
-    // for adding new todo
     if (uuid === "") {
       props.addItem(newTodo);
       return;
     }
-
-    // for editing todo
     props.todos.map((todo) => {
       if (todo.uuid === uuid) {
         if (newTodo.title !== "") {
