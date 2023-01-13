@@ -31,6 +31,7 @@ const EditSetction = (props) => {
           todo.priority = newTodo.priority;
         }
       }
+      return todo;
     });
     props.setTodos([...props.todos]);
     return;

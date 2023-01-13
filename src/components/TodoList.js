@@ -8,7 +8,7 @@ const TodoList = (props) => {
 
   return (
     <div>
-      <ul style={{ listStyleType: "none" }} role="list">
+      <ul style={{ listStyleType: "none" }}>
         {props.todos.map((todo) => (
           <div key={todo.uuid}>
             <TodoItem
