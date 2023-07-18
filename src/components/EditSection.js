@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const EditSection = (props) => {
+const EditSetction = (props) => {
   const [editing, setEditing] = useState(true);
   const [todoData, setTodoData] = useState({
     uuid: props.id || uuidv4(),
@@ -11,11 +11,6 @@ const EditSection = (props) => {
     priority: props.priority || "",
   });
 
-  useEffect(() => {
-    console.log("todos changed");
-    console.log(props.todos);
-  }, [props.todos]);
-
   const finishEdit = (newTodo, uuid = "") => {
     // for adding new todo
     if (uuid === "") {
@@ -23,8 +18,6 @@ const EditSection = (props) => {
       return;
     }
 
-    console.log("DANIEL");
-    console.log(props.todos);
     // for editing todo
     props.todos.map((todo) => {
       if (todo.uuid === uuid) {
@@ -138,4 +131,4 @@ const EditSection = (props) => {
   );
 };
 
-export default EditSection;
+export default EditSetction;
